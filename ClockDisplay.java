@@ -1,4 +1,3 @@
-
 /**
  * The ClockDisplay class implements a digital clock display for a
  * European-style 12 hour clock. The clock shows hours and minutes. The 
@@ -19,6 +18,9 @@ public class ClockDisplay
     private NumberDisplay hours;
     private NumberDisplay minutes;
     private String displayString;    // simulates the actual display
+    private String am = "AM";
+    private String pm = "PM";
+    private boolean indicators;
     
     /**
      * Constructor for ClockDisplay objects. This constructor 
@@ -28,6 +30,7 @@ public class ClockDisplay
     {
         hours = new NumberDisplay(12);
         minutes = new NumberDisplay(60);
+        
         updateDisplay();
     }
 
@@ -36,11 +39,12 @@ public class ClockDisplay
      * creates a new clock set at the time specified by the 
      * parameters.
      */
-    public ClockDisplay(int hour, int minute)
+    public ClockDisplay(int hour, int minute, boolean indicator)
     {
         hours = new NumberDisplay(12);
         minutes = new NumberDisplay(60);
-        setTime(hour, minute);
+        
+        setTime(hour, minute, indicator);
     }
 
     /**
@@ -51,7 +55,16 @@ public class ClockDisplay
     {
         minutes.increment();
         if(minutes.getValue() == 0) {  // it just rolled over!
+            if(hours.getValue() == 0) {
+                if(indicators = true) {
+                    indicators = false;
+                }
+                else if(indicators = false) {
+                    indicators = true;
+                }
+            }
             hours.increment();
+            
         }
         updateDisplay();
     }
@@ -60,10 +73,11 @@ public class ClockDisplay
      * Set the time of the display to the specified hour and
      * minute.
      */
-    public void setTime(int hour, int minute)
+    public void setTime(int hour, int minute, boolean indicator)
     {
         hours.setValue(hour);
         minutes.setValue(minute);
+        indicators =(indicator);
         updateDisplay();
     }
 
@@ -80,7 +94,26 @@ public class ClockDisplay
      */
     private void updateDisplay()
     {
-        displayString = hours.getDisplayValue() + ":" + 
-                        minutes.getDisplayValue();
+        if(hours.getValue() == 0 ) {
+            if(indicators = true) {
+        displayString = "12:" + 
+                        minutes.getDisplayValue() + am;
+                    }
+        else if(indicators = false) {
+        displayString = "12:" + 
+                        minutes.getDisplayValue() + pm;
+                    }
+        }
+     
+        else if(indicators = true) {
+        displayString = hours.getValue() + ":" + 
+                        minutes.getDisplayValue() + am;
+                    }
+        else if(indicators = false) {
+        displayString = hours.getValue() + ":" + 
+                        minutes.getDisplayValue() + pm;
+                    }
+                    
+        
     }
 }
