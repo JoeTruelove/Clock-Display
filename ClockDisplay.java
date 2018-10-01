@@ -5,8 +5,7 @@
  * range of the clock is 12:00 (midnight) to 11:59 (one minute before 
  * midnight).
  * 
- * The clock maintains data internally from 0-23 but displays a 12 hour face
- * with an AM/PM Indicator.
+ * The clock maintains the hour time internally as values from 1-12, not 0-23
  * 
  * The clock display receives "ticks" (via the timeTick method) every minute
  * and reacts by incrementing the display. This is done in the usual clock
@@ -27,7 +26,7 @@ public class ClockDisplay
      */
     public ClockDisplay()
     {
-        hours = new NumberDisplay(24);
+        hours = new NumberDisplay(12);
         minutes = new NumberDisplay(60);
         updateDisplay();
     }
@@ -39,7 +38,7 @@ public class ClockDisplay
      */
     public ClockDisplay(int hour, int minute)
     {
-        hours = new NumberDisplay(24);
+        hours = new NumberDisplay(12);
         minutes = new NumberDisplay(60);
         setTime(hour, minute);
     }
