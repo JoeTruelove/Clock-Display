@@ -18,5 +18,5 @@ comment5.target=java.lang.String\ getTime()
 comment5.text=\r\n\ Return\ the\ current\ time\ of\ this\ display\ in\ the\ format\ HH\:MM.\r\n
 comment6.params=
 comment6.target=void\ updateDisplay()
-comment6.text=\r\n\ Update\ the\ internal\ string\ that\ represents\ the\ display.\r\n
+comment6.text=\r\n\ Updates\ the\ internal\ depending\ on\ the\ hour\ for\ am\ or\ pm\r\n
 numComments=7

@@ -55,9 +55,7 @@ public class ClockDisplay
         minutes.increment();
         if(minutes.getValue() == 0) {  // it just rolled over!
             hours.increment();
-            if(hours.getValue() == 0) {
-                hours.increment();
-            }
+            
         }
        
         updateDisplay();
@@ -87,11 +85,14 @@ public class ClockDisplay
     
     
     /**
-     * Update the internal string that represents the display.
+     * Updates the internal depending on the hour for am or pm
      */
     private void updateDisplay()
     {
-        if(hours.getValue() <= 13) {
+        if(hours.getValue() == 0) {
+            displayString = "12:" + minutes.getDisplayValue() + am;
+        }
+        else if(hours.getValue() <= 13) {
             
         displayString = hours.getValue() + ":" + 
                         minutes.getDisplayValue() + am;
