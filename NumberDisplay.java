@@ -22,7 +22,7 @@ public class NumberDisplay
     public NumberDisplay(int rollOverLimit)
     {
         limit = rollOverLimit;
-        value = 0;
+        value = 1;
     }
 
     /**
