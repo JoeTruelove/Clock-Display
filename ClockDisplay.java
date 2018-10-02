@@ -55,15 +55,16 @@ public class ClockDisplay
     {
         minutes.increment();
         if(minutes.getValue() == 0) {  // it just rolled over!
+            hours.increment();
             if(hours.getValue() == 0) {
-                if(indicators = true) {
-                    indicators = false;
-                }
-                else if(indicators = false) {
+                if(indicators == false) {
                     indicators = true;
                 }
+                else {
+                    indicators = false;
+                }
             }
-            hours.increment();
+            
             
         }
         updateDisplay();
@@ -95,21 +96,21 @@ public class ClockDisplay
     private void updateDisplay()
     {
         if(hours.getValue() == 0 ) {
-            if(indicators = true) {
+            if(indicators == true) {
         displayString = "12:" + 
                         minutes.getDisplayValue() + am;
                     }
-        else if(indicators = false) {
+        else if(indicators == false) {
         displayString = "12:" + 
                         minutes.getDisplayValue() + pm;
                     }
         }
      
-        else if(indicators = true) {
+        else if(indicators == true) {
         displayString = hours.getValue() + ":" + 
                         minutes.getDisplayValue() + am;
                     }
-        else if(indicators = false) {
+        else if(indicators == false) {
         displayString = hours.getValue() + ":" + 
                         minutes.getDisplayValue() + pm;
                     }
