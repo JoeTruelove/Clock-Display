@@ -58,14 +58,12 @@ public class ClockDisplay
             hours.increment();
             if(hours.getValue() == 0) {
                 if(indicators == false) {
-                    indicators = true;
+                    indicators = true;  //switch pm to am vise versa
                 }
                 else {
                     indicators = false;
                 }
             }
-            
-            
         }
         updateDisplay();
     }
@@ -95,26 +93,23 @@ public class ClockDisplay
      */
     private void updateDisplay()
     {
-        if(hours.getValue() == 0 ) {
+        if(hours.getValue() == 0 ) { //NO 0 ONLY 12
             if(indicators == true) {
-        displayString = "12:" + 
-                        minutes.getDisplayValue() + am;
+                    displayString = "12:" + 
+                    minutes.getDisplayValue() + am;
                     }
-        else if(indicators == false) {
-        displayString = "12:" + 
-                        minutes.getDisplayValue() + pm;
+            else if(indicators == false) {
+                    displayString = "12:" + 
+                    minutes.getDisplayValue() + pm;
                     }
         }
-     
         else if(indicators == true) {
-        displayString = hours.getValue() + ":" + 
-                        minutes.getDisplayValue() + am;
+            displayString = hours.getValue() + ":" + 
+            minutes.getDisplayValue() + am;
                     }
         else if(indicators == false) {
-        displayString = hours.getValue() + ":" + 
-                        minutes.getDisplayValue() + pm;
+            displayString = hours.getValue() + ":" + 
+            minutes.getDisplayValue() + pm;
                     }
-                    
-        
     }
 }
